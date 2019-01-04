@@ -17,7 +17,7 @@ class CreateProductsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->integer('price');
-            $table->integer('sale_price');
+            $table->integer('sale_price')->nullable();
             $table->string('category');
             $table->integer('stock_amount');
             $table->boolean('new_product');

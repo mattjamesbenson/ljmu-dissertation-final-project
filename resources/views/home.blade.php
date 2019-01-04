@@ -83,6 +83,8 @@
             </div>
         </div>
 
+        <br>
+
         <div class="container">
             @yield('content')
         </div>
