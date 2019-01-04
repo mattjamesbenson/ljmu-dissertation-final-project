@@ -7,24 +7,49 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function newReleases()
     {
-        //
+        $products = Product::where('new_product', true)->get();
+
+        $category = 'New Releases';
+
+        return view('products.index', compact('products', 'category'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function mens()
     {
-        //
+        $products = Product::where('category', 'mens')->get();
+
+        $category = 'Mens';
+
+        return view('products.index', compact('products', 'category'));
+    }
+
+    public function womens()
+    {
+        $products = Product::where('category', 'womens')->get();
+
+        $category = 'Womens';
+
+        return view('products.index', compact('products', 'category'));
+    }
+
+    public function children()
+    {
+        $products = Product::where('category', 'children')->get();
+
+        $category = 'Children';
+
+        return view('products.index', compact('products', 'category'));
+    }
+
+    public function sale()
+    {
+        $products = Product::whereNotNull('sale_price')->get();
+
+        $category = 'Sale';
+
+        return view('products.sale', compact('products', 'category'));
     }
 
     /**
@@ -35,7 +60,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //ADD PRODUCT TO BASKET
     }
 
     /**
@@ -46,40 +71,6 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Product  $product
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Product $product)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Product  $product
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Product $product)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Product  $product
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Product $product)
-    {
-        //
+        //SHOW PRODUCT DETAILS
     }
 }

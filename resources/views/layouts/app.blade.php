@@ -51,7 +51,7 @@
                             </li>
                         @else
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('get-basket') }}">{{ __('My Basket') }}</a>
+                                <a class="nav-link" href="{{ route('basket.index') }}">{{ __('My Basket') }}</a>
                             </li>
                             
                             <li class="nav-item dropdown">
@@ -76,8 +76,9 @@
                 </div>
             </div>
         </nav>
-
-        @yield('content')   
     </div>
+
+    <br>
+    {{-- @yield('content') --}}   
 </body>
 </html>

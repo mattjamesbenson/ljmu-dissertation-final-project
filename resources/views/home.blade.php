@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>e-Sunglasses</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
@@ -63,33 +63,30 @@
             }
         </style>
     </head>
+
     <body>
         @include('layouts.app')
 
-        <div class="flex-center position-ref full-height">
+        <div class="flex-center position-ref">
             <div class="content">
                 <div class="title m-b-md">
                     {{ config('app.name') }}
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">New Releases</a>
-                    <a href="https://laracasts.com">Men's Sungalsses</a>
-                    <a href="https://laravel-news.com">Women's Sunglasses</a>
-                    <a href="https://nova.laravel.com">Children's Sunglasses</a>
-                    <a href="https://forge.laravel.com">Sale</a>
+                    <a href="{{ route('new-releases') }}">New Releases</a>
+                    <a href="{{ route('mens') }}">Men's Sungalsses</a>
+                    <a href="{{ route('womens') }}">Women's Sunglasses</a>
+                    <a href="{{ route('children') }}">Children's Sunglasses</a>
+                    <a href="{{ route('sale') }}">Sale</a>
                 </div>
             </div>
         </div>
 
-        @foreach($recommendedProducts as $product)
-            <h2>{{$product->name}}</h2>
-        @endforeach
-
-        <div class="row">
-            <div class="col-sm">
-                product
-            </div>
+        <div class="container">
+            @yield('content')
         </div>
+
+        <br>
     </body>
 </html>

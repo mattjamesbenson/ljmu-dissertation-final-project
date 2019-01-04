@@ -10,9 +10,12 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', 'ShopController@index')->name('home');
-
 Auth::routes();
 
-Route::get('/basket', 'ShopController@getBasket')->name('get-basket');
+Route::resource('basket', 'BasketController');
+Route::get('/', 'HomeController@index')->name('index');
+Route::get('new-releases', 'ProductController@newReleases')->name('new-releases');
+Route::get('mens', 'ProductController@mens')->name('mens');
+Route::get('womens', 'ProductController@womens')->name('womens');
+Route::get('children', 'ProductController@children')->name('children');
+Route::get('sale', 'ProductController@sale')->name('sale');
