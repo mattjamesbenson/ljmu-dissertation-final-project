@@ -49,7 +49,7 @@ class ProductController extends Controller
 
         $category = 'Sale';
 
-        return view('products.sale', compact('products', 'category'));
+        return view('products.index', compact('products', 'category'));
     }
 
     /**
@@ -60,7 +60,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //ADD PRODUCT TO BASKET
+
     }
 
     /**
@@ -70,7 +70,7 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Product $product)
-    {
-        //SHOW PRODUCT DETAILS
+    { 
+        return view('products.show', compact('product'));
     }
 }

@@ -15,7 +15,12 @@ class CreateBasketsTable extends Migration
     {
         Schema::create('baskets', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('productId')->unsigned();
+            $table->foreign('productId')->references('id')->on('products');
+            $table->integer('userId')->unsigned();
+            $table->foreign('userId')->references('id')->on('users');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

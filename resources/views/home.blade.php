@@ -69,7 +69,7 @@
 
         <div class="flex-center position-ref">
             <div class="content">
-                <div class="title m-b-md">
+                <div class="display-4">
                     {{ config('app.name') }}
                 </div>
 
@@ -83,9 +83,8 @@
             </div>
         </div>
 
-        <br>
-
         <div class="container">
+            <br>
             @yield('content')
         </div>
 

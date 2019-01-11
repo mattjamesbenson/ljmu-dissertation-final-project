@@ -8,12 +8,12 @@
             <tbody>
                 @foreach($products as $product)  
                     <tr>
-                        <th>IMAGE</th>
+                        <th><a href="{{ route('top-picks-show', $product) }}">IMAGE</a></th>
 
                         <th>
-                            <td>{{$product->name}}</td>  
-                            <td>£{{$product->price}}</td>  
-                            <td>{{ucfirst($product->category)}}</td>  
+                            <td>{{ $product->name }}</td>  
+                            <td>£{{ $product->price }}</td>  
+                            <td>{{ ucfirst($product->category) }}</td>  
                         </th>
                     </tr>
                 @endforeach
