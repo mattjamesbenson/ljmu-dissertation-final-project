@@ -15,12 +15,6 @@ class UsersTableSeeder extends Seeder
     		'id' => 1,
             'name' => 'Matt Benson',
         	'email' => 'mattbenson04@googlemail.com',
-        	'mobile_no' => '01234567890',
-        	'first_line_address' => '1 House Avenue',
-        	'second_line_address' => 'Housby',
-        	'town' => 'Housetown',
-        	'county' => 'Merseyside',
-        	'postcode' => 'L11 1AB',
         	'password' => bcrypt('ko'),
 	    ]);
 

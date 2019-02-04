@@ -2,31 +2,61 @@
 
 @section('content')
 	<div class="container">
-		<h1>{{ $product->name }}</h1>
+		@include('flash::message')
 	</div>
 
-{{-- 	<h1 class="font-weight-light">{{$category}}</h1>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6" style="padding-right:20px; border-right: 1px solid #ccc;">
+				IMAGE
+			</div>
+			
+			<div class="col-md-6">
+				<h1>{{ $product->name }} - {{ ucfirst($product->category) }}</h1>
+				<h2>£{{ $product->price }}</h1>
 
-	 <table class="table">
-	    <tbody>
-	        @foreach($products as $product)  
-	            <tr class="text-center">
-	                <th>IMAGE</th>
+				<div class="row">
+					<div class="col-md-12">
+						@if($product->stock_amount < 10 && $product->stock_amount > 0)
+							<div class="alert alert-danger text-center">
+								Only {{ $product->stock_amount }} left!
+							</div>
+						@elseif ($product->stock_amount == 0)
+							<div class="alert alert-danger text-center">
+								Out of stock
+							</div>
+						@else
+							<div class="alert alert-success text-center">
+								In stock - FREE DELIVERY!
+							</div>
+						@endif
+					</div>
+				</div>
 
-	                <th>
-	                    <td>{{$product->name}} ({{ucfirst($product->category)}})</td>  
-	                    @if($product->sale_price != null)
-	                    	<td class="table-success">
-	                    		<strike>£{{$product->price}}</strike>
-	                    		£{{$product->sale_price}}
-	                    	</td>
-	                    @else
-	                    	<td>£{{$product->price}}</td>  
-	                    @endif
-	                </th>
-	            </tr>
-	        </div>
-	        @endforeach
-	    </tbody>
-	</table> --}}
+				@if($product->stock_amount != 0)
+					<div class="row">
+						<div class="col-md-12">
+							<form method="POST" action="{{ route('basket.store') }}">
+							@csrf
+
+								<input class="input" type="hidden" name="product_id" value="{{ $product->id }}">
+
+								<input class="input" type="hidden" name="user_id" value="{{ Auth::id() }}">
+
+								@if(Auth::user())
+									<button type="submit" class="btn btn-block btn-primary">Add to Basket</button>
+								@endif
+							</form>
+						</div>
+					</div>
+				@endif
+
+				<hr>
+
+				<h3>Description</h3>
+
+				<p>{{ ucfirst($product->category) }}</p>
+			</div>
+		</div>
+	</div>
 @endsection

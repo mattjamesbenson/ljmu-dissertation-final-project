@@ -21,6 +21,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/additional-styles.css') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -30,6 +31,7 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name') }}
                 </a>
+
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -54,7 +56,12 @@
                             </li>
                         @else
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('basket.index') }}">{{ __('My Basket') }}</a>
+                                <a class="nav-link" href="{{ route('basket.index') }}">
+                                    {{ __('My Basket') }} 
+
+                                    <span class="badge badge-primary">{{ App\Basket::get()->where('user_id')->count() }}</span>
+                                </a>
+                            </a>
                             </li>
                             
                             <li class="nav-item dropdown">

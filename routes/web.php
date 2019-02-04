@@ -13,6 +13,7 @@
 Auth::routes();
 
 Route::resource('basket', 'BasketController');
+
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('top-picks/{product}', 'ProductController@show')->name('top-picks-show');
 

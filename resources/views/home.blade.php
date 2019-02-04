@@ -67,11 +67,17 @@
     <body>
         @include('layouts.app')
 
+        <div class="container">
+            @include('flash::message')
+        </div>
+
         <div class="flex-center position-ref">
             <div class="content">
                 <div class="display-4">
                     {{ config('app.name') }}
                 </div>
+                
+                <br>
 
                 <div class="links">
                     <a href="{{ route('new-releases') }}">New Releases</a>
@@ -84,7 +90,7 @@
         </div>
 
         <div class="container">
-            <br>
+            <hr>
             @yield('content')
         </div>
 

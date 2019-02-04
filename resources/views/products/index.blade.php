@@ -8,39 +8,55 @@
 	        @foreach($products as $product)  
 	            <tr class="text-center">
 	            	<th>
-
-	            	@if($category == 'New Releases')
-	                	<a href="{{ route('new-releases-show', $product) }}">IMAGE</a>
-                	@elseif($category == 'Mens')
-                		<a href="{{ route('mens-show', $product) }}">IMAGE</a>
-                	@elseif($category == 'Womens')
-						<a href="{{ route('womens-show', $product) }}">IMAGE</a>
-                	@elseif($category == 'Children')
-                		<a href="{{ route('children-show', $product) }}">IMAGE</a>
-                	@elseif($category == 'Sale')
-						<a href="{{ route('sale-show', $product) }}">IMAGE</a>
-                	@endif
-
+		            	@if($category == 'New Releases')
+		                	<a href="{{ route('new-releases-show', $product) }}">IMAGE</a>
+	                	@elseif($category == 'Mens')
+	                		<a href="{{ route('mens-show', $product) }}">IMAGE</a>
+	                	@elseif($category == 'Womens')
+							<a href="{{ route('womens-show', $product) }}">IMAGE</a>
+	                	@elseif($category == 'Children')
+	                		<a href="{{ route('children-show', $product) }}">IMAGE</a>
+	                	@elseif($category == 'Sale')
+							<a href="{{ route('sale-show', $product) }}">IMAGE</a>
+	                	@endif
                 	</th>
 
-	                <th>
-	                    <td>{{$product->name}} 
+	                <td>
+	                    <td>{{ $product->name }} 
 	    					@if(\Request::is('index'))
 		                    	({{ ucfirst($product->category) }})
 	                    	@endif
 	                    </td>  
 
 	                    @if($product->sale_price != null)
-	                    	<td class="table-success">
-	                    		<strike>£{{ $product->price }}</strike>
+	                    	<td>
+	                    		<p class="text-danger">
+	                    			<strike>£{{ $product->price }}</strike>
+	                    		</p>
+
 	                    		£{{ $product->sale_price }}
 	                    	</td>
 	                    @else
 	                    	<td>£{{ $product->price }}</td>  
 	                    @endif
-	                </th>
+	                </td>
+
+			 		<td>
+			            @if($product->stock_amount < 10 && $product->stock_amount > 0)
+			                <p class="text-orange">
+			                    Only {{ $product->stock_amount }} left!
+			                </p>
+			            @elseif ($product->stock_amount == 0)
+			                <p class="text-danger">
+			                    Out of stock
+			                </div>
+			            @else
+			                <p class="text-success">
+			                    In stock - FREE DELIVERY!
+			                </p>
+			            @endif
+			        </td>
 	            </tr>
-	        </div>
 	        @endforeach
 	    </tbody>
 	</table>
