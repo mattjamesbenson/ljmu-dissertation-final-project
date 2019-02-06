@@ -43,7 +43,7 @@
 
 			 		<td>
 			            @if($product->stock_amount < 10 && $product->stock_amount > 0)
-			                <p class="text-orange">
+			                <p class="text-danger">
 			                    Only {{ $product->stock_amount }} left!
 			                </p>
 			            @elseif ($product->stock_amount == 0)

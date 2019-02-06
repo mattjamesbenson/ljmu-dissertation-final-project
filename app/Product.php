@@ -10,6 +10,6 @@ class Product extends Model
     protected $table = 'products';
 
     public function basket() {
-    	$this->belongsTo(Basket::class);
+    	return$this->belongsTo(Basket::class);
     }
 }

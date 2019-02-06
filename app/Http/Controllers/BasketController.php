@@ -19,15 +19,18 @@ class BasketController extends Controller
         if(\Auth::user()) {
             $userBasket = \Auth::user()->getBasket();
 
-            $productIdArray = array();
+            $productArray = array();
+
+            $orderTotal = 0;
 
             foreach($userBasket as $u) 
             {
                 $productId = $u->product_id;
-                $productArray[] = Product::where('id', $u->product_id)->first();
-            }
+                $productArray[$u->id] = $u->getProduct();
+                $orderTotal += $u->getPrice();  
+            }          
 
-            return view('basket', compact('userBasket', 'productArray'));
+            return view('basket', compact('productArray', 'orderTotal'));
         } else { 
             return redirect()->route('login');
         }
@@ -41,12 +44,16 @@ class BasketController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
+        $request->validate([
             'product_id' => 'required',
             'user_id' => 'required',
         ]);
 
-        Basket::create($request->all());
+        $basket = Basket::create([
+            'product_id' =>  $request->product_id,
+            'user_id' => $request->user_id,
+            'order_placed' => false,
+        ]);
 
         flash('Added to basket!')->success();
 
@@ -95,6 +102,10 @@ class BasketController extends Controller
      */
     public function destroy(Basket $basket)
     {
-        //
+        $basket->delete();
+
+        flash('Item removed from basket.')->success();
+
+        return redirect()->back();
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\User;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -30,6 +31,6 @@ class User extends Authenticatable
 
     public function getBasket()
     {
-        return $this->hasMany(Basket::class)->get();
+        return Basket::where('user_id', $this->id)->get();
     }
 }

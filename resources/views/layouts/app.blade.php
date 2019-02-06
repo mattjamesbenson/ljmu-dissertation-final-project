@@ -59,9 +59,10 @@
                                 <a class="nav-link" href="{{ route('basket.index') }}">
                                     {{ __('My Basket') }} 
 
-                                    <span class="badge badge-primary">{{ App\Basket::get()->where('user_id')->count() }}</span>
+                                    @if(App\Basket::where('user_id', Auth::id())->count() > 0)
+                                        <span class="badge badge-primary">{{ App\Basket::where('user_id', Auth::id())->count() }}</span>
+                                    @endif
                                 </a>
-                            </a>
                             </li>
                             
                             <li class="nav-item dropdown">

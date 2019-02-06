@@ -11,11 +11,16 @@ class Basket extends Model
 
     public function user()
     {
-    	$this->belongsTo(User::class);
+    	return $this->belongsTo(User::class);
     }
 
     public function getProduct()
     {
-    	$this->hasMany(Product::class);
+    	return Product::where('id', $this->product_id)->first();
+    }
+
+    public function getPrice()
+    {
+    	return $this->getProduct()->price;
     }
 }
