@@ -83,7 +83,7 @@
 
                 <div class="links">
                     <a href="{{ route('new-releases') }}">New Releases</a>
-                    <a href="{{ route('mens') }}">Men's Sungalsses</a>
+                    <a href="{{ route('mens') }}">Men's Sunglasses</a>
                     <a href="{{ route('womens') }}">Women's Sunglasses</a>
                     <a href="{{ route('children') }}">Children's Sunglasses</a>
                     <a href="{{ route('sale') }}">Sale</a>

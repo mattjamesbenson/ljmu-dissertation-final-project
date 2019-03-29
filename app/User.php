@@ -3,6 +3,7 @@
 namespace App;
 
 use App\User;
+use App\TrackingTime;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -32,5 +33,17 @@ class User extends Authenticatable
     public function getBasket()
     {
         return Basket::where('user_id', $this->id)->get();
+    }
+
+    public function firstExperimentResults()
+    {
+        return TrackingTime::where('user_id', $this->id)
+            ->where('experiment', 'first')->get();
+    }
+
+    public function secondExperimentResults()
+    {
+        return TrackingTime::where('user_id', $this->id)
+            ->where('experiment', 'second')->get();
     }
 }

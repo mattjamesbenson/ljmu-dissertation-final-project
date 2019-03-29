@@ -13,7 +13,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('start-page');
+        return view('experiment-1.start-page');
     }
 
     public function show()
@@ -29,6 +29,8 @@ class HomeController extends Controller
                 ->get();
             
             if ($experimentResults->count() == 0) {
+                flash('Performance for "Experiment 1" is now being recorded.')->success();
+
                 TrackingTime::create([
                     'user_id' => Auth::id(),
                     'page_from' => 'home_page',
@@ -38,7 +40,7 @@ class HomeController extends Controller
                     'experiment' => 'first',
                 ]);
 
-                return view('home-content', compact('products'));
+                return view('experiment-1.home-content', compact('products'));
             } 
 
             if ($experimentResults->where('page_to', null)->count() == 1) {
@@ -51,16 +53,16 @@ class HomeController extends Controller
                 Auth::logout();
                 Basket::truncate();
 
-                flash('Performance successfully recorded. Please log in again and click the button labelled "Log in for Experiment 2".')->success();
+                flash('Performance successfully recorded. Your actions are no longer being tracked. Please log in again and click the button labelled "Log in for Experiment 2".')->success();
             }
         }
 
-        return view('home-content', compact('products'));
+        return view('experiment-1.home-content', compact('products'));
     }
 
     public function index2()
     {
-        return view('second-turn');
+        return view('experiment-2.second-turn');
     }
 
     public function second()
@@ -76,6 +78,8 @@ class HomeController extends Controller
                 ->get();
                 
             if ($experimentResults->count() == 0) {
+                flash('Performance for "Experiment 1" is now being recorded.')->success();
+
                 TrackingTime::create([
                     'user_id' => Auth::id(),
                     'page_from' => 'home_page',
@@ -85,7 +89,7 @@ class HomeController extends Controller
                     'experiment' => 'second',
                 ]);
 
-                return view('home-content-2', compact('products'));
+                return view('experiment-2.home-content-2', compact('products'));
             } 
 
             if ($experimentResults->where('page_to', null)->count() == 1) {
@@ -98,10 +102,12 @@ class HomeController extends Controller
                 Auth::logout();
                 Basket::truncate();
 
+                flash('Performance successfully recorded. Your actions are no longer being tracked.')->success();
+
                 return view('experiment-end');
             }
 
-            return view('home-content-2', compact('products'));
+            return view('experiment-2.home-content-2', compact('products'));
         }
     }
 }

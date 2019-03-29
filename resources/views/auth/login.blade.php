@@ -53,6 +53,8 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
+
+                                <p class="text-danger">Complete Experiment 1 first, then Experiment 2 after.</p>
                                 <input name="experiment" value="1" type="hidden">
 
                                 <button type="submit" class="btn btn-primary" name="experiment" value="1">
@@ -62,10 +64,6 @@
                                 <button type="submit" class="btn btn-primary" name="experiment" value="2">
                                     {{ __('Log in for Experiment 2') }}
                                 </button>
-
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    {{ __('Forgot Your Password?') }}
-                                </a>
                             </div>
                         </div>
                     </form>
