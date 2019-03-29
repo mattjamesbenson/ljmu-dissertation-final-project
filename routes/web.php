@@ -13,8 +13,13 @@
 Auth::routes();
 
 Route::resource('basket', 'BasketController');
+Route::resource('order', 'OrderController');
 
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/experiment-1', 'HomeController@index')->name('experiment-1');
+Route::get('/experiment-2', 'HomeController@index2')->name('experiment-2');
+Route::get('home', 'HomeController@show')->name('home-show');
+Route::get('home-second', 'HomeController@second')->name('home-second');
+
 Route::get('top-picks/{product}', 'ProductController@show')->name('top-picks-show');
 
 Route::get('new-releases', 'ProductController@newReleases')->name('new-releases');

@@ -58,10 +58,12 @@ trait AuthenticatesUsers
      *
      * @param  \Illuminate\Http\Request  $request
      * @return void
+     *
+     * @throws \Illuminate\Validation\ValidationException
      */
     protected function validateLogin(Request $request)
     {
-        $this->validate($request, [
+        $request->validate([
             $this->username() => 'required|string',
             'password' => 'required|string',
         ]);
@@ -116,7 +118,11 @@ trait AuthenticatesUsers
      */
     protected function authenticated(Request $request, $user)
     {
-        //
+        if($request->experiment == '1') {
+            return redirect()->route('experiment-1');
+        } elseif ($request->experiment == '2') {
+            return redirect()->route('experiment-2');
+        }
     }
 
     /**

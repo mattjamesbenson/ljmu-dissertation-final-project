@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
+use App\TrackingTime;
 use App\Basket;
 use App\Product;
 use App\User;
@@ -17,20 +19,21 @@ class BasketController extends Controller
     public function index()
     {
         if(\Auth::user()) {
-            $userBasket = \Auth::user()->getBasket();
+            $productArray = \Auth::user()->getBasket();
 
-            $productArray = array();
+            if($productArray) {
+                $orderTotal = 0;
 
-            $orderTotal = 0;
+                foreach($productArray as $p) {
+                    $orderTotal = $orderTotal + $p->getPrice();
+                }
 
-            foreach($userBasket as $u) 
-            {
-                $productId = $u->product_id;
-                $productArray[$u->id] = $u->getProduct();
-                $orderTotal += $u->getPrice();  
-            }          
+                return view('basket.basket', compact('productArray', 'orderTotal'));
+            } else {
+                flash('Basket is empty.')->warning();
 
-            return view('basket', compact('productArray', 'orderTotal'));
+                return redirect()->back();  
+            }
         } else { 
             return redirect()->route('login');
         }
@@ -44,53 +47,40 @@ class BasketController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'product_id' => 'required',
-            'user_id' => 'required',
-        ]);
+        if(\Auth::user()) {
+            $request->validate([
+                'product_id' => 'required',
+                'user_id' => 'required',
+            ]);
 
-        $basket = Basket::create([
-            'product_id' =>  $request->product_id,
-            'user_id' => $request->user_id,
-            'order_placed' => false,
-        ]);
+            $basket = Basket::create([
+                'product_id' =>  $request->product_id,
+                'user_id' => $request->user_id,
+                'order_placed' => false,
+            ]);
 
-        flash('Added to basket!')->success();
+            $product = $basket->getProduct();
+            $product->stock_amount = $product->stock_amount - 1;
+            $product->save();
 
-        return redirect()->back();
+            flash('Added to basket!')->success();
+
+            return redirect()->back();
+        } else {
+            flash('Please log in to add to basket.')->warning();
+
+            return redirect()->back();  
+        }
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Basket  $basket
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Basket $basket)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Basket  $basket
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Basket $basket)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Basket  $basket
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Basket $basket)
-    {
+    public function show($id)
+    { 
         //
     }
 
@@ -108,4 +98,38 @@ class BasketController extends Controller
 
         return redirect()->back();
     }
+
+    // /**
+    //  * Display the specified resource.
+    //  *
+    //  * @param  \Illuminate\Http\Request  $request
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function orderDetails(User $user)
+    // {
+    //     $userBasket = $user->getBasket();
+
+    //     $productArray = array();
+
+    //     $orderTotal = 0;
+
+    //     foreach($userBasket as $u) 
+    //     {
+    //         $productId = $u->product_id;
+    //         $productArray[$u->id] = $u->getProduct();
+    //         $orderTotal += $u->getPrice();  
+    //     }          
+    // }
+
+    // *
+    //  * Store a newly created resource in storage.
+    //  *
+    //  * @param  \Illuminate\Http\Request  $request
+    //  * @return \Illuminate\Http\Response
+     
+    // public function placeOrder(Request $request)
+    // {
+
+    // }
+
 }

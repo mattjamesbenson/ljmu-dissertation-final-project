@@ -13,7 +13,7 @@
 			
 			<div class="col-md-6">
 				<h1>{{ $product->name }} - {{ ucfirst($product->category) }}</h1>
-				<h2>£{{ $product->price }}</h1>
+				<h2>£{{ $product->price }}</h2>
 
 				<div class="row">
 					<div class="col-md-12">
@@ -36,17 +36,14 @@
 				@if($product->stock_amount != 0)
 					<div class="row">
 						<div class="col-md-12">
-							<form method="POST" action="{{ route('basket.store') }}">
+							<form method="POST" action="{{ Auth::user() ? route('basket.store') : route('login') }}">
 							@csrf
 
 								<input class="input" type="hidden" name="product_id" value="{{ $product->id }}">
-
 								<input class="input" type="hidden" name="user_id" value="{{ Auth::id() }}">
 
-								@if(Auth::user())
-									<button type="submit" class="btn btn-block btn-primary">Add to Basket</button>
-								@endif
-							</form>
+								<button type="submit" class="btn btn-block btn-primary">Add to Basket</button>
+							</form>							
 						</div>
 					</div>
 				@endif

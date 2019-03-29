@@ -9,7 +9,7 @@ class ProductController extends Controller
 {
     public function newReleases()
     {
-        $products = Product::where('new_product', true)->get();
+        $products = Product::where('new_product', true)->paginate(5);
 
         $category = 'New Releases';
 
@@ -18,7 +18,7 @@ class ProductController extends Controller
 
     public function mens()
     {
-        $products = Product::where('category', 'mens')->get();
+        $products = Product::where('category', 'mens')->paginate(5);
 
         $category = 'Mens';
 
@@ -27,7 +27,7 @@ class ProductController extends Controller
 
     public function womens()
     {
-        $products = Product::where('category', 'womens')->get();
+        $products = Product::where('category', 'womens')->paginate(5);
 
         $category = 'Womens';
 
@@ -36,7 +36,7 @@ class ProductController extends Controller
 
     public function children()
     {
-        $products = Product::where('category', 'children')->get();
+        $products = Product::where('category', 'children')->paginate(5);
 
         $category = 'Children';
 
@@ -45,7 +45,7 @@ class ProductController extends Controller
 
     public function sale()
     {
-        $products = Product::whereNotNull('sale_price')->get();
+        $products = Product::whereNotNull('sale_price')->paginate(5);
 
         $category = 'Sale';
 
@@ -71,6 +71,8 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     { 
+        // \DB::create('tracking')->
+
         return view('products.show', compact('product'));
     }
 }

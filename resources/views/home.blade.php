@@ -74,7 +74,9 @@
         <div class="flex-center position-ref">
             <div class="content">
                 <div class="display-4">
-                    {{ config('app.name') }}
+                    <a href="/home" style="color:inherit; text-decoration: none;">
+                        {{ config('app.name') }}
+                    </a>
                 </div>
                 
                 <br>

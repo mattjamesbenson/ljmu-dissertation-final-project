@@ -40,4 +40,10 @@
             @endforeach
         </tbody>
     </table>
+
+    <div class="container">
+        <div class="float-right">
+            {{ $products->links() }}
+        </div>
+    </div>
 @endsection

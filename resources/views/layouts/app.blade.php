@@ -28,7 +28,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ url('/home') }}">
                     {{ config('app.name') }}
                 </a>
 
@@ -56,13 +56,15 @@
                             </li>
                         @else
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('basket.index') }}">
-                                    {{ __('My Basket') }} 
+                                @if(!Auth::user()->getBasket()->isEmpty())
+                                    <a class="nav-link" href="{{ route('basket.index') }}">
+                                        {{ __('My Basket') }} 
 
-                                    @if(App\Basket::where('user_id', Auth::id())->count() > 0)
-                                        <span class="badge badge-primary">{{ App\Basket::where('user_id', Auth::id())->count() }}</span>
-                                    @endif
-                                </a>
+                                        @if(App\Basket::where('user_id', Auth::id())->count() > 0)
+                                            <span class="badge badge-primary">{{ App\Basket::where('user_id', Auth::id())->count() }}</span>
+                                        @endif
+                                    </a>
+                                @endif
                             </li>
                             
                             <li class="nav-item dropdown">

@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Product;
 
 class Product extends Model
 {
@@ -10,6 +11,6 @@ class Product extends Model
     protected $table = 'products';
 
     public function basket() {
-    	return$this->belongsTo(Basket::class);
+    	return $this->belongsTo(Basket::class);
     }
 }

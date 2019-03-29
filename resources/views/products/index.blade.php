@@ -30,9 +30,9 @@
 
 	                    @if($product->sale_price != null)
 	                    	<td>
-	                    		<p class="text-danger">
+	                    		<text class="text-danger">
 	                    			<strike>£{{ $product->price }}</strike>
-	                    		</p>
+	                    		</text>
 
 	                    		£{{ $product->sale_price }}
 	                    	</td>
@@ -42,7 +42,7 @@
 	                </td>
 
 			 		<td>
-			            @if($product->stock_amount < 10 && $product->stock_amount > 0)
+			            @if($product->stock_amount < 5 && $product->stock_amount > 0)
 			                <p class="text-danger">
 			                    Only {{ $product->stock_amount }} left!
 			                </p>
@@ -60,4 +60,10 @@
 	        @endforeach
 	    </tbody>
 	</table>
+
+	<div class="container">
+		<div class="float-right">
+			{{ $products->links() }}
+		</div>
+	</div>
 @endsection

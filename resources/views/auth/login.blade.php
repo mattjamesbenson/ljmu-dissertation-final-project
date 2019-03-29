@@ -53,8 +53,14 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
+                                <input name="experiment" value="1" type="hidden">
+
+                                <button type="submit" class="btn btn-primary" name="experiment" value="1">
+                                    {{ __('Log in for Experiment 1') }}
+                                </button>
+
+                                <button type="submit" class="btn btn-primary" name="experiment" value="2">
+                                    {{ __('Log in for Experiment 2') }}
                                 </button>
 
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
@@ -63,6 +69,17 @@
                             </div>
                         </div>
                     </form>
+
+                    <hr>
+                        <div class="form-group row mb-0">
+                            <div class="col-md-8 offset-md-4">
+                            
+                                <a class="btn btn-link" href="{{ route('register') }}">
+                                    {{ __('Not signed up yet? Register here.') }}
+                                </a>
+                            </div>
+                        </div>
+
                 </div>
             </div>
         </div>
