@@ -1,14 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container" style="margin-top: 50px; background-color: unset;">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Login') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
+                    <p class="text-danger text-center">Please log with the username "userYOUR-USER-NUMBER@googlemail.com". The password is "password".</p>
+
+                    <form method="POST" action="{{ route('login') }}" autocomplete="off">
                         @csrf
 
                         <div class="form-group row">

@@ -64,7 +64,7 @@
         </style>
     </head>
 
-    <body>
+    <body style="margin-top: 50px; background-color: unset;">
         @include('layouts.app')
 
         <div class="container">
@@ -72,22 +72,22 @@
         </div>
 
         <div class="flex-center position-ref">
-            <div class="content">
+            <div class="content" id="topPicks">
                 <div class="display-4">
-                    <a href="/home" style="color:inherit; text-decoration: none;">
-                        {{ config('app.name') }}
-                    </a>
+                    {{ config('app.name') }}
                 </div>
                 
                 <br>
 
-                <div class="links">
-                    <a href="{{ route('new-releases') }}">New Releases</a>
-                    <a href="{{ route('mens') }}">Men's Sunglasses</a>
-                    <a href="{{ route('womens') }}">Women's Sunglasses</a>
-                    <a href="{{ route('children') }}">Children's Sunglasses</a>
-                    <a href="{{ route('sale') }}">Sale</a>
-                </div>
+                @if(App\User::where('id', Auth::id())->where('experiment', 'second')->count() == 0)
+                    <div class="links">
+                        <a href="{{ route('new-releases') }}">New Releases</a>
+                        <a href="{{ route('mens') }}">Men's Sunglasses</a>
+                        <a href="{{ route('womens') }}">Women's Sunglasses</a>
+                        <a href="{{ route('children') }}">Children's Sunglasses</a>
+                        <a href="{{ route('sale') }}">Sale</a>
+                    </div>
+                @endif
             </div>
         </div>
 

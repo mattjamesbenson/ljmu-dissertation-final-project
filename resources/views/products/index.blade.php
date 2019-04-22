@@ -5,27 +5,41 @@
 
 	 <table class="table">
 	    <tbody>
-	        @foreach($products as $product)  
+	        @foreach($products as $product) 
 	            <tr class="text-center">
 	            	<th>
 		            	@if($category == 'New Releases')
-		                	<a href="{{ route('new-releases-show', $product) }}">IMAGE</a>
+		                	<a href="{{ route('new-releases-show', $product) }}">
+		                		<img src="{{ $product->src }}"  height="200" width="400" alt="Image of {{ $product->name }}"/>
+		                	</a>
 	                	@elseif($category == 'Mens')
-	                		<a href="{{ route('mens-show', $product) }}">IMAGE</a>
+	                		<a href="{{ route('mens-show', $product) }}">
+	                			<img src="{{ $product->src }}"  height="200" width="400" alt="Image of {{ $product->name }}"/>
+	                		</a>
 	                	@elseif($category == 'Womens')
-							<a href="{{ route('womens-show', $product) }}">IMAGE</a>
-	                	@elseif($category == 'Children')
-	                		<a href="{{ route('children-show', $product) }}">IMAGE</a>
+							<a href="{{ route('womens-show', $product) }}">
+								<img src="{{ $product->src }}"  height="200" width="400" alt="Image of {{ $product->name }}"/>
+							</a>
+	                	@elseif($category == 'Childrens')
+	                		<a href="{{ route('children-show', $product) }}">
+	                			<img src="{{ $product->src }}"  height="200" width="400" alt="Image of {{ $product->name }}"/>
+	                		</a>
 	                	@elseif($category == 'Sale')
-							<a href="{{ route('sale-show', $product) }}">IMAGE</a>
+							<a href="{{ route('sale-show', $product) }}">
+								<img src="{{ $product->src }}"  height="200" width="400" alt="Image of {{ $product->name }}"/>
+							</a>
 	                	@endif
                 	</th>
 
+                	<td>
+	                    <td>
+	                    	{{ ucfirst($product->name) }}
+	                    </td>  
+	                </td>
+
 	                <td>
-	                    <td>{{ $product->name }} 
-	    					@if(\Request::is('index'))
-		                    	({{ ucfirst($product->category) }})
-	                    	@endif
+	                    <td>
+	                    	{{ ucfirst($product->category) }}
 	                    </td>  
 
 	                    @if($product->sale_price != null)

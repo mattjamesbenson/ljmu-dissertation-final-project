@@ -9,16 +9,18 @@
                 <tr class="text-center">
                     <th>
                         <div class="link">
-                            <a href="{{ route('top-picks-show', $product) }}">IMAGE</a></th>
+                            <a href="{{ route('top-picks-show', $product) }}">
+                                <img src="{{ $product->src }}"  height="200" width="400" alt="Image of {{ $product->name }}"/>
+                            </a>
                         </div>
                     </th>
 
                     <th>
                         <td>{{ $product->name }}</td>  
 
-                        <td>£{{ $product->price }}</td>  
-
                         <td>{{ ucfirst($product->category) }}</td>  
+
+                        <td>£{{ $product->price }}</td> 
 
                         <td>
                             @if($product->stock_amount < 10 && $product->stock_amount > 0)

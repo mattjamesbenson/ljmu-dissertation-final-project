@@ -47,41 +47,40 @@ class BasketController extends Controller
      */
     public function store(Request $request)
     {
-        if(\Auth::user()) {
-            $request->validate([
-                'product_id' => 'required',
-                'user_id' => 'required',
-            ]);
+         $experimentResults = TrackingTime::where('user_id', \Auth::id())
+            ->where('experiment', 'second')
+            ->get();        
 
-            $basket = Basket::create([
-                'product_id' =>  $request->product_id,
-                'user_id' => $request->user_id,
-                'order_placed' => false,
-            ]);
+        if($request->one_click == true) {
+            if ($experimentResults->where('user_id', \Auth::id())->where('experiment', 'second')->where('page_to', null)->count() == 1) {
+                $e =$experimentResults->first();
+                $e->user_id = \Auth::id();
+                $e->timestamp_2 = Carbon::now();
+                $e->page_to = 'order_decided';
+                $e->update();
 
-            $product = $basket->getProduct();
-            $product->stock_amount = $product->stock_amount - 1;
-            $product->save();
+                \Auth::logout();
+                Basket::truncate();
 
-            flash('Added to basket!')->success();
+                flash('Performance successfully recorded. Your actions are no longer being tracked.')->success();
 
-            return redirect()->back();
-        } else {
-            flash('Please log in to add to basket.')->warning();
-
-            return redirect()->back();  
+                return view('experiment-end');
+            }
         }
-    }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    { 
-        //
+        $basket = Basket::create([
+            'product_id' =>  $request->product_id,
+            'user_id' => $request->user_id,
+            'order_placed' => false,
+        ]);
+
+        $product = $basket->getProduct();
+        $product->stock_amount = $product->stock_amount - 1;
+        $product->save();
+
+        flash('Added to basket!')->success();
+
+        return redirect()->back();
     }
 
     /**
@@ -98,38 +97,4 @@ class BasketController extends Controller
 
         return redirect()->back();
     }
-
-    // /**
-    //  * Display the specified resource.
-    //  *
-    //  * @param  \Illuminate\Http\Request  $request
-    //  * @return \Illuminate\Http\Response
-    //  */
-    // public function orderDetails(User $user)
-    // {
-    //     $userBasket = $user->getBasket();
-
-    //     $productArray = array();
-
-    //     $orderTotal = 0;
-
-    //     foreach($userBasket as $u) 
-    //     {
-    //         $productId = $u->product_id;
-    //         $productArray[$u->id] = $u->getProduct();
-    //         $orderTotal += $u->getPrice();  
-    //     }          
-    // }
-
-    // *
-    //  * Store a newly created resource in storage.
-    //  *
-    //  * @param  \Illuminate\Http\Request  $request
-    //  * @return \Illuminate\Http\Response
-     
-    // public function placeOrder(Request $request)
-    // {
-
-    // }
-
 }

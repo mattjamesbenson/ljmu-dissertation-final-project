@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container" style="margin-top: 50px;">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 @include('flash::message')
@@ -28,26 +28,30 @@
                             @foreach($productArray as $p) 
                                 <div class="row">
                                     <div class="col-md-3">
-                                        IMAGE
+                                        <img src="{{ $p->getProduct()->src }}"  height="100" width="200" alt="Image of {{ $p->getProduct()->name }}"/>
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        {{ $p->getProduct()->name }}
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        {{ ucfirst($p->getProduct()->category) }}
                                     </div>
 
                                     <div class="col-md-3">
-                                        {{ $p->name }}
-                                    </div>
-
-                                    <div class="col-md-3">
-                                        @if($p->sale_price != null)
+                                        @if($p->getProduct()->sale_price != null)
                                             <p class="text-danger">
-                                                <strike>£{{ $p->price }}</strike>
+                                                <strike>£{{ $p->getProduct()->price }}</strike>
                                             </p>
 
-                                            £{{ $p->sale_price }}
+                                            £{{ $p->getProduct()->sale_price }}
                                         @else
                                             £{{ $p->getPrice() }}.00
                                         @endif
                                     </div>
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-2">
                                         <form method="POST" action="basket/{{ $p->id }}">
                                             @csrf
 

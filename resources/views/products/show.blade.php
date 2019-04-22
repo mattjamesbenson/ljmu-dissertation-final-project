@@ -5,10 +5,12 @@
 		@include('flash::message')
 	</div>
 
+
+
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6" style="padding-right:20px; border-right: 1px solid #ccc;">
-				IMAGE
+				<img src="{{ $product->src }}"  height="250" width="500" alt="Image of {{ $product->name }}"/>
 			</div>
 			
 			<div class="col-md-6">
@@ -36,7 +38,7 @@
 				@if($product->stock_amount != 0)
 					<div class="row">
 						<div class="col-md-12">
-							<form method="POST" action="{{ Auth::user() ? route('basket.store') : route('login') }}">
+							<form method="POST" action="{{ !Auth::user() ? route('login') : route('basket.store') }}">
 							@csrf
 
 								<input class="input" type="hidden" name="product_id" value="{{ $product->id }}">
@@ -50,9 +52,7 @@
 
 				<hr>
 
-				<h3>Description</h3>
-
-				<p>{{ ucfirst($product->category) }}</p>
+				<p>{{ $product->description }}</h3>
 			</div>
 		</div>
 	</div>

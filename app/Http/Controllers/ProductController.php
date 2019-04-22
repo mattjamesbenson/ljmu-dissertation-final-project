@@ -36,9 +36,9 @@ class ProductController extends Controller
 
     public function children()
     {
-        $products = Product::where('category', 'children')->paginate(5);
+        $products = Product::where('category', 'childrens')->paginate(5);
 
-        $category = 'Children';
+        $category = 'Childrens';
 
         return view('products.index', compact('products', 'category'));
     }
@@ -53,17 +53,6 @@ class ProductController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function addToBasket(Request $request)
-    {
-        dd('hey');
-    }
-
-    /**
      * Display the specified resource.
      *
      * @param  \App\Product  $product
@@ -71,8 +60,6 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     { 
-        // \DB::create('tracking')->
-
         return view('products.show', compact('product'));
     }
 }

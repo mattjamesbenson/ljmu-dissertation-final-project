@@ -1,0 +1,225 @@
+{
+	"data":
+	[
+		{
+			"id": 1,
+			"user_id": 1,
+			"page_from": "home_page",
+			"page_to": "order_decided",
+			"timestamp_1": "2019-04-11 11:32:46",
+			"timestamp_2": "2019-04-11 11:33:14",
+			"experiment": "first",
+			"created_at": "2019-04-11 11:32:46",
+			"updated_at": "2019-04-11 11:33:14"
+		},
+		{
+			"id": 2,
+			"user_id": 1,
+			"page_from": "home_page",
+			"page_to": "order_decided",
+			"timestamp_1": "2019-04-11 11:33:32",
+			"timestamp_2": "2019-04-11 11:33:44",
+			"experiment": "second",
+			"created_at": "2019-04-11 11:33:32",
+			"updated_at": "2019-04-11 11:33:44"
+		},
+		{
+			"id": 3,
+			"user_id": 2,
+			"page_from": "home_page",
+			"page_to": "order_decided",
+			"timestamp_1": "2019-04-11 12:36:24",
+			"timestamp_2": "2019-04-11 12:37:09",
+			"experiment": "first",
+			"created_at": "2019-04-11 12:36:24",
+			"updated_at": "2019-04-11 12:37:09"
+		},
+		{
+			"id": 4,
+			"user_id": 2,
+			"page_from": "home_page",
+			"page_to": "order_decided",
+			"timestamp_1": "2019-04-11 12:37:25",
+			"timestamp_2": "2019-04-11 12:37:38",
+			"experiment": "second",
+			"created_at": "2019-04-11 12:37:25",
+			"updated_at": "2019-04-11 12:37:38"
+		},
+		{
+			"id": 5,
+			"user_id": 3,
+			"page_from": "home_page",
+			"page_to": "order_decided",
+			"timestamp_1": "2019-04-11 12:39:50",
+			"timestamp_2": "2019-04-11 12:40:30",
+			"experiment": "first",
+			"created_at": "2019-04-11 12:39:50",
+			"updated_at": "2019-04-11 12:40:30"
+		},
+		{
+			"id": 6,
+			"user_id": 3,
+			"page_from": "home_page",
+			"page_to": "order_decided",
+			"timestamp_1": "2019-04-11 12:40:43",
+			"timestamp_2": "2019-04-11 12:41:04",
+			"experiment": "second",
+			"created_at": "2019-04-11 12:40:43",
+			"updated_at": "2019-04-11 12:41:04"
+		},
+		{
+			"id": 7,
+			"user_id": 4,
+			"page_from": "home_page",
+			"page_to": "order_decided",
+			"timestamp_1": "2019-04-11 12:43:34",
+			"timestamp_2": "2019-04-11 12:43:58",
+			"experiment": "first",
+			"created_at": "2019-04-11 12:43:34",
+			"updated_at": "2019-04-11 12:43:58"
+		},
+		{
+			"id": 8,
+			"user_id": 4,
+			"page_from": "home_page",
+			"page_to": "order_decided",
+			"timestamp_1": "2019-04-11 12:44:11",
+			"timestamp_2": "2019-04-11 12:44:20",
+			"experiment": "second",
+			"created_at": "2019-04-11 12:44:11",
+			"updated_at": "2019-04-11 12:44:20"
+		},
+		{
+			"id": 9,
+			"user_id": 5,
+			"page_from": "home_page",
+			"page_to": "order_decided",
+			"timestamp_1": "2019-04-11 12:50:21",
+			"timestamp_2": "2019-04-11 12:51:08",
+			"experiment": "first",
+			"created_at": "2019-04-11 12:50:21",
+			"updated_at": "2019-04-11 12:51:08"
+		},
+		{
+			"id": 10,
+			"user_id": 5,
+			"page_from": "home_page",
+			"page_to": "order_decided",
+			"timestamp_1": "2019-04-11 12:51:44",
+			"timestamp_2": "2019-04-11 12:52:12",
+			"experiment": "second",
+			"created_at": "2019-04-11 12:51:44",
+			"updated_at": "2019-04-11 12:52:12"
+		},
+		{
+			"id": 11,
+			"user_id": 6,
+			"page_from": "home_page",
+			"page_to": "order_decided",
+			"timestamp_1": "2019-04-11 12:55:01",
+			"timestamp_2": "2019-04-11 12:56:31",
+			"experiment": "first",
+			"created_at": "2019-04-11 12:55:01",
+			"updated_at": "2019-04-11 12:56:31"
+		},
+		{
+			"id": 12,
+			"user_id": 6,
+			"page_from": "home_page",
+			"page_to": "order_decided",
+			"timestamp_1": "2019-04-11 12:56:45",
+			"timestamp_2": "2019-04-11 12:57:12",
+			"experiment": "second",
+			"created_at": "2019-04-11 12:56:45",
+			"updated_at": "2019-04-11 12:57:12"
+		},
+		{
+			"id": 13,
+			"user_id": 7,
+			"page_from": "home_page",
+			"page_to": "order_decided",
+			"timestamp_1": "2019-04-11 14:14:54",
+			"timestamp_2": "2019-04-11 14:15:45",
+			"experiment": "first",
+			"created_at": "2019-04-11 14:14:54",
+			"updated_at": "2019-04-11 14:15:45"
+		},
+		{
+			"id": 14,
+			"user_id": 7,
+			"page_from": "home_page",
+			"page_to": "order_decided",
+			"timestamp_1": "2019-04-11 14:15:57",
+			"timestamp_2": "2019-04-11 14:16:22",
+			"experiment": "second",
+			"created_at": "2019-04-11 14:15:57",
+			"updated_at": "2019-04-11 14:16:22"
+		},
+		{
+			"id": 15,
+			"user_id": 8,
+			"page_from": "home_page",
+			"page_to": "order_decided",
+			"timestamp_1": "2019-04-11 14:19:40",
+			"timestamp_2": "2019-04-11 14:20:43",
+			"experiment": "first",
+			"created_at": "2019-04-11 14:19:40",
+			"updated_at": "2019-04-11 14:20:43"
+		},
+		{
+			"id": 16,
+			"user_id": 8,
+			"page_from": "home_page",
+			"page_to": "order_decided",
+			"timestamp_1": "2019-04-11 14:20:54",
+			"timestamp_2": "2019-04-11 14:21:09",
+			"experiment": "second",
+			"created_at": "2019-04-11 14:20:54",
+			"updated_at": "2019-04-11 14:21:09"
+		},
+		{
+			"id": 17,
+			"user_id": 9,
+			"page_from": "home_page",
+			"page_to": "order_decided",
+			"timestamp_1": "2019-04-11 14:30:22",
+			"timestamp_2": "2019-04-11 14:31:31",
+			"experiment": "first",
+			"created_at": "2019-04-11 14:30:22",
+			"updated_at": "2019-04-11 14:31:31"
+		},
+		{
+			"id": 18,
+			"user_id": 9,
+			"page_from": "home_page",
+			"page_to": "order_decided",
+			"timestamp_1": "2019-04-11 14:31:54",
+			"timestamp_2": "2019-04-11 14:32:14",
+			"experiment": "second",
+			"created_at": "2019-04-11 14:31:54",
+			"updated_at": "2019-04-11 14:32:14"
+		},
+		{
+			"id": 19,
+			"user_id": 10,
+			"page_from": "home_page",
+			"page_to": "order_decided",
+			"timestamp_1": "2019-04-11 14:36:22",
+			"timestamp_2": "2019-04-11 14:37:13",
+			"experiment": "first",
+			"created_at": "2019-04-11 14:36:22",
+			"updated_at": "2019-04-11 14:37:13"
+		},
+		{
+			"id": 20,
+			"user_id": 10,
+			"page_from": "home_page",
+			"page_to": "order_decided",
+			"timestamp_1": "2019-04-11 14:37:44",
+			"timestamp_2": "2019-04-11 14:38:12",
+			"experiment": "second",
+			"created_at": "2019-04-11 14:37:44",
+			"updated_at": "2019-04-11 14:38:12"
+		}
+	]
+}

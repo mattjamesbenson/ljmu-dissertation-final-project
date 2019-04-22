@@ -1,8 +1,8 @@
-@extends('home')
+{{-- @extends('home')
 
 @section('content')
 	<h1 class="font-weight-light">{{$category}}</h1>
-	<h2> SALEEEEE </h2>
+	<h2> Sale </h2>
 	 <table class="table">
 	    <tbody>
 	        @foreach($products as $product)  
@@ -19,4 +19,4 @@
 	        @endforeach
 	    </tbody>
 	</table>
-@endsection
+@endsection --}}

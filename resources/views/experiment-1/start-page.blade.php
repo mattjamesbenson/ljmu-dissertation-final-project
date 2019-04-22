@@ -22,14 +22,14 @@
 	<h2><b>Instructions:<b><h2>
 
 	<h3>
-		<li>Find a pair of <text class="text-primary">BLUE</text> Men's sunglasses and add them to the basket.</li>
-		<li>Find a pair of <text class="text-danger">RED</text> Women's sunglasses in the SALE and add them to the basket.</li>
-		<li>Proceed to checkout.</li>
+		<li>Find a pair of <text class="text-primary">MEN'S</text> sunglasses in the colour <b>BLACK</b> and checkout with that one item. The sunglasses <b>MUST</b> include a free <text class="text-danger">SUNGLASSES CLEANING KIT</text>. The pair of sunglasses with those specific requirements is inside the app somewhere. Try not to checkout any other sunglasses.</li>
 	</h3>
+
+	<hr>
 
 	<div class="col-md-12 text-center">
 		<a href="{{ route('home-show') }}">
-			<button class="btn btn-primary">Let's get started!</button>
+			<button class="btn btn-primary">Begin Experiment 1</button>
 		</a>
 	</div>
 @endsection

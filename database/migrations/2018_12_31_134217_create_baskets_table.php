@@ -19,7 +19,7 @@ class CreateBasketsTable extends Migration
             $table->foreign('product_id')->references('id')->on('products');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->boolean('order_placed')->default(false);
+            $table->boolean('order_placed');
             $table->timestamps();
             $table->softDeletes();
         });

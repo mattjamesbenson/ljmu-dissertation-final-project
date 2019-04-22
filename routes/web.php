@@ -13,7 +13,6 @@
 Auth::routes();
 
 Route::resource('basket', 'BasketController');
-Route::resource('order', 'OrderController');
 
 Route::get('/experiment-1', 'HomeController@index')->name('experiment-1');
 Route::get('/experiment-2', 'HomeController@index2')->name('experiment-2');

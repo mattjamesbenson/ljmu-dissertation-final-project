@@ -67,18 +67,26 @@ class HomeController extends Controller
 
     public function second()
     {
-        $products = Product::orderBy('category', 'desc')->where('recommended', true)->paginate(5);
-
         if(Auth::user()) {
+            $products = Product::all();
+
+            $topPicks = $products->where('recommended', true)->all();
+            $new = $products->where('new_product', true)->all();
+            $mens = $products->where('category', 'mens')->all();
+            $womens = $products->where('category', 'womens')->all();
+            $childrens = $products->where('category', 'childrens')->all();
+            $sale = $products->where('sale_price', true)->all();
+
             Auth::user()->experiment = 'second';
             Auth::user()->save();
 
             $experimentResults = TrackingTime::where('user_id', Auth::id())
                 ->where('experiment', 'second')
+                ->where('page_to', null)
                 ->get();
                 
             if ($experimentResults->count() == 0) {
-                flash('Performance for "Experiment 1" is now being recorded.')->success();
+                flash('Performance for "Experiment 2" is now being recorded.')->success();
 
                 TrackingTime::create([
                     'user_id' => Auth::id(),
@@ -89,25 +97,10 @@ class HomeController extends Controller
                     'experiment' => 'second',
                 ]);
 
-                return view('experiment-2.home-content-2', compact('products'));
-            } 
-
-            if ($experimentResults->where('page_to', null)->count() == 1) {
-                $e =$experimentResults->first();
-                $e->user_id = Auth::id();
-                $e->timestamp_2 = Carbon::now();
-                $e->page_to = 'order_decided';
-                $e->update();
-
-                Auth::logout();
-                Basket::truncate();
-
-                flash('Performance successfully recorded. Your actions are no longer being tracked.')->success();
-
-                return view('experiment-end');
+                return view('experiment-2.home-content-2', compact('topPicks', 'new', 'mens', 'womens', 'childrens', 'sale'));
+            } else {
+                return view('experiment-2.home-content-2', compact('topPicks', 'new', 'mens', 'womens', 'childrens', 'sale'));
             }
-
-            return view('experiment-2.home-content-2', compact('products'));
         }
     }
 }
