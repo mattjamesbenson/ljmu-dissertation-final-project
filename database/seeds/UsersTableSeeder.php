@@ -60,6 +60,28 @@ class UsersTableSeeder extends Seeder
                 'name' => 'User 7',
                 'email' => 'user7@googlemail.com',
                 'password' => bcrypt('password'),
+            ],
+
+            [
+                'id' => 8,
+                'name' => 'User 8',
+                'email' => 'user8@googlemail.com',
+                'password' => bcrypt('password'),
+            ],
+
+            [
+                'id' => 9,
+                'name' => 'User 9',
+                'email' => 'user9@googlemail.com',
+                'password' => bcrypt('password'),
+            ]
+            ,
+
+            [
+                'id' => 10,
+                'name' => 'User 10',
+                'email' => 'user10@googlemail.com',
+                'password' => bcrypt('password'),
             ]
         ]);
     }
