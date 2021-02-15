@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '3d7eec306c8721532d23af35ab83c5c8c884c99f',
+    'reference' => 'a5046f9c5ecb2d96b46239f68357983b7433bfab',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -415,7 +415,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '3d7eec306c8721532d23af35ab83c5c8c884c99f',
+      'reference' => 'a5046f9c5ecb2d96b46239f68357983b7433bfab',
     ),
     'laravel/nexmo-notification-channel' => 
     array (
