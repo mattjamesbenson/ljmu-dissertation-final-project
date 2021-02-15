@@ -118,11 +118,7 @@ trait AuthenticatesUsers
      */
     protected function authenticated(Request $request, $user)
     {
-        if($request->experiment == '1') {
-            return redirect()->route('experiment-1');
-        } elseif ($request->experiment == '2') {
-            return redirect()->route('experiment-2');
-        }
+        //
     }
 
     /**
